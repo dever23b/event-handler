@@ -1,17 +1,5 @@
-export type EventHandlerCallback<TArgs, TReturn> = (
-  ...args: TArgs[]
-) => TReturn;
-
-export interface EventHandlerCollection<
-  TCallback extends EventHandlerCallback<any, void>
-> {
-  addListener: (callback: TCallback) => void;
-  hasListener: (callback: TCallback) => void;
-  removeListener: (callback: TCallback) => void;
-}
-
-export class EventHandler<
-  TCallback extends EventHandlerCallback<any, any> = () => void
+class EventHandler<
+  TCallback extends EventHandler.Callback<any, any> = () => void
 > {
   // #listeners = new Map<string, TCallback[]>();
   #listeners = new Set<TCallback>();
@@ -35,7 +23,7 @@ export class EventHandler<
     return this.#listeners.size > 0;
   }
 
-  get onEvent(): EventHandlerCollection<TCallback> {
+  get onEvent(): EventHandler.Methods<TCallback> {
     return {
       addListener: this.addListener.bind(this),
       hasListener: this.hasListener.bind(this),
@@ -75,6 +63,19 @@ export class EventHandler<
         callback(...args);
       }, context);
     }
+  }
+}
+
+namespace EventHandler {
+  export type Callback<TArgs, TReturn> = (
+    ...args: TArgs[]
+  ) => TReturn;
+  export interface Methods<
+    TCallback extends EventHandler.Callback<any, void>
+  > {
+    addListener: (callback: TCallback) => void;
+    hasListener: (callback: TCallback) => void;
+    removeListener: (callback: TCallback) => void;
   }
 }
 
