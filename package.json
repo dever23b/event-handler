@@ -7,11 +7,12 @@
   "directories": {
     "test": "test"
   },
+  "files": ["dist"],
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npx tsc",
-    "pre-publish": "npm run clean && npm run test && npm run build",
-    "test": "jest"
+    "test": "jest",
+    "pre-publish": "npm run clean && npm run test && npm run build"
   },
   "repository": {
     "type": "git",
