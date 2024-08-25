@@ -1,17 +1,20 @@
 {
   "name": "@dever23b/event-handler",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "TypeScript event handler class",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "directories": {
     "test": "test"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npx tsc",
-    "pre-publish": "npm run clean && npm run test && npm run build",
-    "test": "jest"
+    "test": "jest",
+    "pre-publish": "npm run clean && npm run test && npm run build"
   },
   "repository": {
     "type": "git",
