@@ -1,6 +1,6 @@
 {
   "name": "@dever23b/event-handler",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "TypeScript event handler class",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
