@@ -1,5 +1,5 @@
-class EventHandler<
-  TCallback extends EventHandler.Callback<any, any> = () => void
+export class EventHandler<
+  TCallback extends EventHandler.Callback<any, any> = () => void,
 > {
   // #listeners = new Map<string, TCallback[]>();
   #listeners = new Set<TCallback>();
@@ -66,12 +66,12 @@ class EventHandler<
   }
 }
 
-namespace EventHandler {
+export namespace EventHandler {
   export type Callback<TArgs, TReturn> = (
     ...args: TArgs[]
   ) => TReturn;
   export interface Methods<
-    TCallback extends EventHandler.Callback<any, void>
+    TCallback extends EventHandler.Callback<any, void>,
   > {
     addListener: (callback: TCallback) => void;
     hasListener: (callback: TCallback) => void;
@@ -79,4 +79,5 @@ namespace EventHandler {
   }
 }
 
+/** @deprecated Migrate to named export */
 export default EventHandler;

@@ -1,4 +1,4 @@
-import EventHandler from "../src/index";
+import { EventHandler } from "../src/index";
 
 describe("testing index file", () => {
   test("class can be initiated", () => {
